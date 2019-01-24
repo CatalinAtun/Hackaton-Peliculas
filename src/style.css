@@ -1,3 +1,4 @@
+
 @font-face {
     font-family: Leitura-Grot2;
     src: url(LeituraSans-Grot2.otf);
@@ -86,3 +87,42 @@
     .img1{
         border-radius: 2px;
     }
+
+.navbar{
+    background-color: #ec407a;
+}
+.navbar1{
+    background-color: black;
+}
+.img{
+    width: 10%;
+}
+.img1{
+    width: 100%;
+}
+.btn{
+    color: whitesmoke;
+    border-color: whitesmoke;
+    border-radius: 4px;
+}
+.custom-select{
+    background-color: #ec407a;
+    color: whitesmoke;
+}
+#root {
+    display: flex;
+    justify-content: center;
+}
+#body{
+    background-color: black;
+}
+.card{
+    margin: 20px;
+}
+.card-title{
+    text-align: center;
+}
+.img1{
+    border-radius: 2px;
+}
+
