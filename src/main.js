@@ -26,7 +26,6 @@ const chileanMovies = [
     {title:"O Bandido da Luz Vermelha", imdbID:"tt0144782"},
     {title:"Por primera vez", imdbID:"tt0405251"},
     {title:"Antonio das Mortes", imdbID:"tt0064256"},
-    {title:"79 primaveras", imdbID:"tt0149565"},
     {title:"El Topo", imdbID:"tt0067866"},
     {title:"La montaña sagrada", imdbID:"tt0071615"},
     {title:"La batalla de Chile: La lucha de un pueblo sin armas - Primera parte: La insurrección de la burguesía", imdbID:"tt0072685"},
@@ -146,6 +145,29 @@ function sortData(data, sortBy, sortOrder) {
 
 
 
+
+  let moviesArray = chileanMovies;
+
+    
+  containerRoot.innerHTML = ""; 
+  arrTotal = [];  
+  for (let i = 0; i<moviesArray.length; i++){    
+      fetch('http://www.omdbapi.com/?i='+moviesArray[i].imdbID+'&apikey=2bbb5651')
+      .then(res => res.json())
+      .then (data => {
+        arrTotal.push(data)  
+        containerRoot.innerHTML +=`<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
+        <div class="card" style="width: 18rem;">
+        <img src="${data.Poster}" id="img2" class="img-fluid" alt="poster">
+        <div class="card-body">
+        <h3 class="card-title">${data.Title}</h3>
+        </div>
+        <button id="random" class="btn3 btn-dark col-lg-3">Más información</button>
+        </div>
+        </div>`
+      }) 
+  }  
+
 let moviesArray = chileanMovies;
 
     
@@ -196,17 +218,31 @@ let moviesArray = chileanMovies;
 
 
 
+
 selectGenre.addEventListener('change', () => {
     let arr = []
     containerRoot.innerHTML = ""; 
     let condition = selectGenre.options[selectGenre.selectedIndex].text;
     let moviesArray = chileanMovies;
     for (let i = 0; i<moviesArray.length; i++){    
+
+        fetch('http://www.omdbapi.com/?i='+moviesArray[i].imdbID+'&apikey=2bbb5651')
+
         fetch('https://cors-anywhere.herokuapp.com/http://www.omdbapi.com/?i='+moviesArray[i].imdbID+'&apikey=2bbb5651')
+
         .then(res => res.json())
         .then (data => {      
           if ((data.Genre).includes(condition) === true){
               arr.push(data);
+
+              containerRoot.innerHTML += `<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
+              <div class="card" style="width: 18rem;">
+              <img src="${data.Poster}" id="img2" class="img-fluid" alt="poster">
+              <div class="card-body">
+              <h3 class="card-title">${data.Title}</h3>
+              </div>
+              </div>
+
               containerRoot.innerHTML += `
               <div>
                   <div class="card">
@@ -217,6 +253,7 @@ selectGenre.addEventListener('change', () => {
                           <h2>${data.Title}</h2>
                       </div>
                   </div>
+
               </div>`
             }                        
         }) 
@@ -228,6 +265,19 @@ selectCountry.addEventListener('change', () => {
     let condition = selectCountry.options[selectCountry.selectedIndex].text;
     let moviesArray = chileanMovies;
     for (let i = 0; i<moviesArray.length; i++){    
+
+        fetch('http://www.omdbapi.com/?i='+moviesArray[i].imdbID+'&apikey=2bbb5651')
+        .then(res => res.json())
+        .then (data => {      
+          if ((data.Country).includes(condition) === true){
+              containerRoot.innerHTML += `<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
+              <div class="card" style="width: 18rem;">
+              <img src="${data.Poster}" id="img2" class="img-fluid" alt="poster">
+              <div class="card-body">
+              <h3 class="card-title">${data.Title}</h3>
+              </div>
+              </div>
+
         fetch('https://cors-anywhere.herokuapp.com/http://www.omdbapi.com/?i='+moviesArray[i].imdbID+'&apikey=2bbb5651')
         .then(res => res.json())
         .then (data => {      
@@ -252,6 +302,19 @@ document.getElementById("random").addEventListener("click", function(){
     containerRoot.innerHTML = ""; 
     let moviesArray = chileanMovies;
     let randomMovie = moviesArray[Math.floor(Math.random() * moviesArray.length)];    
+
+    fetch('http://www.omdbapi.com/?i='+randomMovie.imdbID+'&apikey=2bbb5651')
+    .then(res => res.json())
+    .then (data => {   
+        containerRoot.innerHTML += `<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
+        <div class="card" style="width: 18rem;">
+        <img src="${data.Poster}" id="img2" class="img-fluid" alt="poster">
+        <div class="card-body">
+        <h3 class="card-title">${data.Title}</h3>
+        </div>
+        </div>
+        </div>`
+
     fetch('https://cors-anywhere.herokuapp.com/http://www.omdbapi.com/?i='+randomMovie.imdbID+'&apikey=2bbb5651')
     .then(res => res.json())
     .then (data => {   
@@ -271,9 +334,6 @@ document.getElementById("random").addEventListener("click", function(){
 
 
 
-
-
-
  
 /* function randomMovie(moviesArray){
     let result = [];
@@ -285,3 +345,4 @@ document.getElementById("random").addEventListener("click", function(){
     })     
     return result;
   }  */
+
