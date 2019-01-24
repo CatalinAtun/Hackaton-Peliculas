@@ -161,13 +161,35 @@ let moviesArray = chileanMovies;
               <div class="card">
                   <div class="box">
                       <div class="img">
-                          <img src="${data.Poster}">
+                          <img  id="modal-button" src="${data.Poster}">
                       </div>
                       <h2>${data.Title}</h2>
                       <h3>${data.Country}</>
                   </div>
               </div>
           </div>`
+          document.getElementById("modal-button").addEventListener("click", function(){
+            document.getElementById("modal-result").innerHTML = 
+            `<div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Modal Header</h4>
+                  </div>
+                  <div class="modal-body">
+                      <div>
+                      <h2>${data.Title}</h2>
+                      <h3>${data.Country}</h3>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+              </div>     
+          </div>
+      </div>`             
+        })       
         }) 
     }  
 
