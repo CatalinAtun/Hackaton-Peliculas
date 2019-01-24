@@ -215,4 +215,35 @@ selectYear.addEventListener('change', () => {
     } 
 })
 
+document.getElementById("random").addEventListener("click", function(){
+    containerRoot.innerHTML = ""; 
+    let moviesArray = netflixOriginals;
+    let randomMovie = moviesArray[Math.floor(Math.random() * moviesArray.length)];    
+    fetch('http://www.omdbapi.com/?i='+randomMovie.imdbID+'&apikey=f465da65')
+    .then(res => res.json())
+    .then (data => {   
+        containerRoot.innerHTML += `
+          <div>
+              <div class="card">
+                  <div class="box">
+                      <div class="img">
+                          <img src="${data.Poster}">
+                      </div>
+                      <h2>${data.Title}</h2>
+                  </div>
+              </div>
+          </div>`
+  })
+})
+
  
+/* function randomMovie(moviesArray){
+    let result = [];
+    let randomMovie = moviesArray[Math.floor(Math.random() * moviesArray.length)];    
+    fetch('http://www.omdbapi.com/?i='+randomMovie.imdbID+'&apikey=f465da65')
+    .then(res => res.json())
+    .then (data => {      
+      result.push(data)                           
+    })     
+    return result;
+  }  */
