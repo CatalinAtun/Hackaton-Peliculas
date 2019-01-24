@@ -145,14 +145,13 @@ function sortData(data, sortBy, sortOrder) {
 
 
 
-
   let moviesArray = chileanMovies;
 
     
   containerRoot.innerHTML = ""; 
   arrTotal = [];  
   for (let i = 0; i<moviesArray.length; i++){    
-      fetch('http://www.omdbapi.com/?i='+moviesArray[i].imdbID+'&apikey=2bbb5651')
+      fetch('https://cors-anywhere.herokuapp.com/http://www.omdbapi.com/?i='+moviesArray[i].imdbID+'&apikey=2bbb5651')
       .then(res => res.json())
       .then (data => {
         arrTotal.push(data)  
@@ -161,61 +160,37 @@ function sortData(data, sortBy, sortOrder) {
         <img src="${data.Poster}" id="img2" class="img-fluid" alt="poster">
         <div class="card-body">
         <h3 class="card-title">${data.Title}</h3>
+        <p class="card-subtitle">${data.Country}</p>
+        <p class="card-subtitle">${data.Genre}</p>
+        <p class="card-subtitle">${data.Year}</p>
         </div>
-        <button id="random" class="btn3 btn-dark col-lg-3">Más información</button>
         </div>
         </div>`
       }) 
   }  
 
-let moviesArray = chileanMovies;
-
-    
-    containerRoot.innerHTML = ""; 
-    arrTotal = [];  
-    for (let i = 0; i<moviesArray.length; i++){    
-        fetch('https://cors-anywhere.herokuapp.com/http://www.omdbapi.com/?i='+moviesArray[i].imdbID+'&apikey=2bbb5651')
-        .then(res => res.json())
-        .then (data => {
-          arrTotal.push(data)  
-          containerRoot.innerHTML += `
-          <div>
-              <div class="card">
-                  <div class="box">
-                      <div class="img">
-                          <img  id="modal-button" src="${data.Poster}">
-                      </div>
-                      <h2>${data.Title}</h2>
-                      <h3>${data.Country}</>
-                  </div>
-              </div>
-          </div>`
-          document.getElementById("modal-button").addEventListener("click", function(){
-            document.getElementById("modal-result").innerHTML = 
-            `<div class="modal fade" id="myModal" role="dialog">
-          <div class="modal-dialog">
-              <div class="modal-content">
-                  <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h4 class="modal-title">Modal Header</h4>
-                  </div>
-                  <div class="modal-body">
-                      <div>
-                      <h2>${data.Title}</h2>
-                      <h3>${data.Country}</h3>
-                      </div>
-                  </div>
-                  <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  </div>
-              </div>     
-          </div>
-      </div>`             
-        })       
-        }) 
-    }  
-
-
+document.getElementById("all").addEventListener('click', () => {
+  containerRoot.innerHTML = ""; 
+  arrTotal = [];  
+  for (let i = 0; i<moviesArray.length; i++){    
+      fetch('https://cors-anywhere.herokuapp.com/http://www.omdbapi.com/?i='+moviesArray[i].imdbID+'&apikey=2bbb5651')
+      .then(res => res.json())
+      .then (data => {
+        arrTotal.push(data)  
+        containerRoot.innerHTML +=`<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
+        <div class="card" style="width: 18rem;">
+        <img src="${data.Poster}" id="img2" class="img-fluid" alt="poster">
+        <div class="card-body">
+        <h3 class="card-title">${data.Title}</h3>
+        <p class="card-subtitle">${data.Country}</p>
+        <p class="card-subtitle">${data.Genre}</p>
+        <p class="card-subtitle">${data.Year}</p>
+        </div>
+        </div>
+        </div>`
+      }) 
+  } 
+})
 
 
 
@@ -225,35 +200,21 @@ selectGenre.addEventListener('change', () => {
     let condition = selectGenre.options[selectGenre.selectedIndex].text;
     let moviesArray = chileanMovies;
     for (let i = 0; i<moviesArray.length; i++){    
-
-        fetch('http://www.omdbapi.com/?i='+moviesArray[i].imdbID+'&apikey=2bbb5651')
-
         fetch('https://cors-anywhere.herokuapp.com/http://www.omdbapi.com/?i='+moviesArray[i].imdbID+'&apikey=2bbb5651')
-
         .then(res => res.json())
         .then (data => {      
           if ((data.Genre).includes(condition) === true){
               arr.push(data);
-
               containerRoot.innerHTML += `<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
               <div class="card" style="width: 18rem;">
               <img src="${data.Poster}" id="img2" class="img-fluid" alt="poster">
               <div class="card-body">
               <h3 class="card-title">${data.Title}</h3>
+              <p class="card-subtitle">${data.Country}</p>
+              <p class="card-subtitle">${data.Genre}</p>
+        <p class="card-subtitle">${data.Year}</p>
               </div>
               </div>
-
-              containerRoot.innerHTML += `
-              <div>
-                  <div class="card">
-                      <div class="box">
-                          <div class="img">
-                              <img src="${data.Poster}">
-                          </div>
-                          <h2>${data.Title}</h2>
-                      </div>
-                  </div>
-
               </div>`
             }                        
         }) 
@@ -265,8 +226,7 @@ selectCountry.addEventListener('change', () => {
     let condition = selectCountry.options[selectCountry.selectedIndex].text;
     let moviesArray = chileanMovies;
     for (let i = 0; i<moviesArray.length; i++){    
-
-        fetch('http://www.omdbapi.com/?i='+moviesArray[i].imdbID+'&apikey=2bbb5651')
+        fetch('https://cors-anywhere.herokuapp.com/http://www.omdbapi.com/?i='+moviesArray[i].imdbID+'&apikey=2bbb5651')
         .then(res => res.json())
         .then (data => {      
           if ((data.Country).includes(condition) === true){
@@ -275,23 +235,11 @@ selectCountry.addEventListener('change', () => {
               <img src="${data.Poster}" id="img2" class="img-fluid" alt="poster">
               <div class="card-body">
               <h3 class="card-title">${data.Title}</h3>
+              <p class="card-subtitle">${data.Country}</p>
+              <p class="card-subtitle">${data.Genre}</p>
+        <p class="card-subtitle">${data.Year}</p>
               </div>
               </div>
-
-        fetch('https://cors-anywhere.herokuapp.com/http://www.omdbapi.com/?i='+moviesArray[i].imdbID+'&apikey=2bbb5651')
-        .then(res => res.json())
-        .then (data => {      
-          if ((data.Country).includes(condition) === true){
-              containerRoot.innerHTML += `
-              <div>
-                  <div class="card">
-                      <div class="box">
-                          <div class="img">
-                              <img src="${data.Poster}">
-                          </div>
-                          <h2>${data.Title}</h2>
-                      </div>
-                  </div>
               </div>`
             }                        
         }) 
@@ -302,8 +250,7 @@ document.getElementById("random").addEventListener("click", function(){
     containerRoot.innerHTML = ""; 
     let moviesArray = chileanMovies;
     let randomMovie = moviesArray[Math.floor(Math.random() * moviesArray.length)];    
-
-    fetch('http://www.omdbapi.com/?i='+randomMovie.imdbID+'&apikey=2bbb5651')
+    fetch('https://cors-anywhere.herokuapp.com/http://www.omdbapi.com/?i='+randomMovie.imdbID+'&apikey=2bbb5651')
     .then(res => res.json())
     .then (data => {   
         containerRoot.innerHTML += `<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
@@ -311,38 +258,12 @@ document.getElementById("random").addEventListener("click", function(){
         <img src="${data.Poster}" id="img2" class="img-fluid" alt="poster">
         <div class="card-body">
         <h3 class="card-title">${data.Title}</h3>
+        <p class="card-subtitle">${data.Country}</p>
+        <p class="card-subtitle">${data.Genre}</p>
+        <p class="card-subtitle">${data.Year}</p>
         </div>
         </div>
         </div>`
-
-    fetch('https://cors-anywhere.herokuapp.com/http://www.omdbapi.com/?i='+randomMovie.imdbID+'&apikey=2bbb5651')
-    .then(res => res.json())
-    .then (data => {   
-        containerRoot.innerHTML += `
-          <div>
-              <div class="card">
-                  <div class="box">
-                      <div class="img">
-                          <img src="${data.Poster}">
-                      </div>
-                      <h2>${data.Title}</h2>
-                  </div>
-              </div>
-          </div>`
   })
 })
-
-
-
- 
-/* function randomMovie(moviesArray){
-    let result = [];
-    let randomMovie = moviesArray[Math.floor(Math.random() * moviesArray.length)];    
-    fetch('http://www.omdbapi.com/?i='+randomMovie.imdbID+'&apikey=f465da65')
-    .then(res => res.json())
-    .then (data => {      
-      result.push(data)                           
-    })     
-    return result;
-  }  */
 
