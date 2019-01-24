@@ -152,7 +152,7 @@ let moviesArray = chileanMovies;
     containerRoot.innerHTML = ""; 
     arrTotal = [];  
     for (let i = 0; i<moviesArray.length; i++){    
-        fetch('http://www.omdbapi.com/?i='+moviesArray[i].imdbID+'&apikey=2bbb5651')
+        fetch('https://cors-anywhere.herokuapp.com/http://www.omdbapi.com/?i='+moviesArray[i].imdbID+'&apikey=2bbb5651')
         .then(res => res.json())
         .then (data => {
           arrTotal.push(data)  
@@ -202,7 +202,7 @@ selectGenre.addEventListener('change', () => {
     let condition = selectGenre.options[selectGenre.selectedIndex].text;
     let moviesArray = chileanMovies;
     for (let i = 0; i<moviesArray.length; i++){    
-        fetch('http://www.omdbapi.com/?i='+moviesArray[i].imdbID+'&apikey=2bbb5651')
+        fetch('https://cors-anywhere.herokuapp.com/http://www.omdbapi.com/?i='+moviesArray[i].imdbID+'&apikey=2bbb5651')
         .then(res => res.json())
         .then (data => {      
           if ((data.Genre).includes(condition) === true){
@@ -228,7 +228,7 @@ selectCountry.addEventListener('change', () => {
     let condition = selectCountry.options[selectCountry.selectedIndex].text;
     let moviesArray = chileanMovies;
     for (let i = 0; i<moviesArray.length; i++){    
-        fetch('http://www.omdbapi.com/?i='+moviesArray[i].imdbID+'&apikey=2bbb5651')
+        fetch('https://cors-anywhere.herokuapp.com/http://www.omdbapi.com/?i='+moviesArray[i].imdbID+'&apikey=2bbb5651')
         .then(res => res.json())
         .then (data => {      
           if ((data.Country).includes(condition) === true){
@@ -252,7 +252,7 @@ document.getElementById("random").addEventListener("click", function(){
     containerRoot.innerHTML = ""; 
     let moviesArray = chileanMovies;
     let randomMovie = moviesArray[Math.floor(Math.random() * moviesArray.length)];    
-    fetch('http://www.omdbapi.com/?i='+randomMovie.imdbID+'&apikey=2bbb5651')
+    fetch('https://cors-anywhere.herokuapp.com/http://www.omdbapi.com/?i='+randomMovie.imdbID+'&apikey=2bbb5651')
     .then(res => res.json())
     .then (data => {   
         containerRoot.innerHTML += `
