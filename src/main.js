@@ -183,6 +183,8 @@ document.getElementById("all").addEventListener('click', () => {
         <div class="card-body">
         <h3 class="card-title">${data.Title}</h3>
         <p class="card-subtitle">${data.Country}</p>
+        <p class="card-subtitle">${data.Genre}</p>
+        <p class="card-subtitle">${data.Year}</p>
         </div>
         </div>
         </div>`
@@ -209,6 +211,8 @@ selectGenre.addEventListener('change', () => {
               <div class="card-body">
               <h3 class="card-title">${data.Title}</h3>
               <p class="card-subtitle">${data.Country}</p>
+              <p class="card-subtitle">${data.Genre}</p>
+        <p class="card-subtitle">${data.Year}</p>
               </div>
               </div>
               </div>`
@@ -232,6 +236,8 @@ selectCountry.addEventListener('change', () => {
               <div class="card-body">
               <h3 class="card-title">${data.Title}</h3>
               <p class="card-subtitle">${data.Country}</p>
+              <p class="card-subtitle">${data.Genre}</p>
+        <p class="card-subtitle">${data.Year}</p>
               </div>
               </div>
               </div>`
@@ -253,6 +259,8 @@ document.getElementById("random").addEventListener("click", function(){
         <div class="card-body">
         <h3 class="card-title">${data.Title}</h3>
         <p class="card-subtitle">${data.Country}</p>
+        <p class="card-subtitle">${data.Genre}</p>
+        <p class="card-subtitle">${data.Year}</p>
         </div>
         </div>
         </div>`
