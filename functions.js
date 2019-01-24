@@ -1,5 +1,5 @@
 
-/* function getMovies(moviesArray){
+ /* function getMovies(moviesArray){
     let arr = [];
     for (let i = 0; i<moviesArray.length; i++){    
         fetch('http://www.omdbapi.com/?i='+moviesArray[i].imdbID+'&apikey=f465da65')
@@ -9,9 +9,10 @@
         }) 
     }
     return arr;
-  } */
-      
-  /* function filterData(moviesArray, condition){
+  }  */
+  
+
+   /* function filterData(moviesArray, condition){
     let arr = [];
     for (let i = 0; i<moviesArray.length; i++){    
       fetch('http://www.omdbapi.com/?i='+moviesArray[i].imdbID+'&apikey=f465da65')
@@ -25,9 +26,9 @@
       }) 
     }
     return arr;
-  } */
+  }  */
   
-  function randomMovie(moviesArray){
+  /* function randomMovie(moviesArray){
     let result = [];
     let randomMovie = moviesArray[Math.floor(Math.random() * moviesArray.length)];    
     fetch('http://www.omdbapi.com/?i='+randomMovie.imdbID+'&apikey=f465da65')
@@ -36,4 +37,4 @@
       result.push(data)                           
     })     
     return result;
-  } 
+  }  */

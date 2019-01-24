@@ -1,8 +1,4 @@
-const containerRoot = document.getElementById('root');
-const selectGenre = document.getElementById('genre');
-const selectCountry = document.getElementById('country');
-
-const chileanMovies = [
+/*  const chileanMovies = [
     {title:"Limite", imdbID:"tt0022080"},
     {title:"María Candelaria", imdbID:"tt0037054"},
     {title:"El fugitivo", imdbID:"tt0039402"},
@@ -103,163 +99,16 @@ const chileanMovies = [
     {title:"El ciudadano ilustre", imdbID:"tt4562518"},
     {title:"Doña Clara", imdbID:"tt5221584"},
     {title:"Una Mujer Fantástica", imdbID:"tt5639354"},
-]
-
-function sortData(data, sortBy, sortOrder) { 
-    /* se utiliza metodo sort() aprendido aquí https://www.w3schools.com/js/js_array_sort.asp para números y strings */
-    /* lo siguiente ordena según valor numérico, dividiendose en ascendente(true) y descendente(false) */
-    if (typeof data[0][sortBy] === "number") {
-      if (sortOrder === true){
-        return data.sort(function(a, b){return a[sortBy] - b[sortBy]});
-      } else if (sortOrder == false){
-        return data.sort(function(a, b){return b[sortBy] - a[sortBy]});
-      } 
-    /* lo siguiente ordena según valor string, dividiendose en ascendente(true) y descendente(false) */
-    } else if (typeof data[0][sortBy] === "string") {    
-      if (sortOrder === true){
-        return data.sort(function(a, b){ 
-          let x = a[sortBy].toLowerCase();
-          let y = b[sortBy].toLowerCase();       
-          if (x < y) {
-            return -1;
-          } if (x > y) {
-            return 1;
-          } else {
-            return 0;
-          }
-        });
-      } else if (sortOrder == false){
-        return data.sort(function(a, b){ 
-          let x = a[sortBy].toLowerCase();
-          let y = b[sortBy].toLowerCase();       
-          if (x < y) {
-            return 1;
-          } if (x > y) {
-            return -1;
-          } else {
-            return 0;
-          }
-        }); 
-      }  
-    }
-  }
-
-
-
-let moviesArray = chileanMovies;
-
-    
-    containerRoot.innerHTML = ""; 
-    arrTotal = [];  
+] */
+ 
+ /* function getMovies(moviesArray){
+    let arr = [];
     for (let i = 0; i<moviesArray.length; i++){    
         fetch('http://www.omdbapi.com/?i='+moviesArray[i].imdbID+'&apikey=2bbb5651')
         .then(res => res.json())
         .then (data => {
-          arrTotal.push(data)  
-          containerRoot.innerHTML += `
-          <div>
-              <div class="card">
-                  <div class="box">
-                      <div class="img">
-                          <img src="${data.Poster}">
-                      </div>
-                      <h2>${data.Title}</h2>
-                      <h3>${data.Country}</>
-                  </div>
-              </div>
-          </div>`
+          arr.push(data);
         }) 
-    }  
-
-
-
-
-selectGenre.addEventListener('change', () => {
-    let arr = []
-    containerRoot.innerHTML = ""; 
-    let condition = selectGenre.options[selectGenre.selectedIndex].text;
-    let moviesArray = chileanMovies;
-    for (let i = 0; i<moviesArray.length; i++){    
-        fetch('http://www.omdbapi.com/?i='+moviesArray[i].imdbID+'&apikey=2bbb5651')
-        .then(res => res.json())
-        .then (data => {      
-          if ((data.Genre).includes(condition) === true){
-              arr.push(data);
-              containerRoot.innerHTML += `
-              <div>
-                  <div class="card">
-                      <div class="box">
-                          <div class="img">
-                              <img src="${data.Poster}">
-                          </div>
-                          <h2>${data.Title}</h2>
-                      </div>
-                  </div>
-              </div>`
-            }                        
-        }) 
-    } 
-})
-  
-selectCountry.addEventListener('change', () => {
-    containerRoot.innerHTML = ""; 
-    let condition = selectCountry.options[selectCountry.selectedIndex].text;
-    let moviesArray = chileanMovies;
-    for (let i = 0; i<moviesArray.length; i++){    
-        fetch('http://www.omdbapi.com/?i='+moviesArray[i].imdbID+'&apikey=2bbb5651')
-        .then(res => res.json())
-        .then (data => {      
-          if ((data.Country).includes(condition) === true){
-              containerRoot.innerHTML += `
-              <div>
-                  <div class="card">
-                      <div class="box">
-                          <div class="img">
-                              <img src="${data.Poster}">
-                          </div>
-                          <h2>${data.Title}</h2>
-                      </div>
-                  </div>
-              </div>`
-            }                        
-        }) 
-    } 
-})
-
-document.getElementById("random").addEventListener("click", function(){
-    containerRoot.innerHTML = ""; 
-    let moviesArray = chileanMovies;
-    let randomMovie = moviesArray[Math.floor(Math.random() * moviesArray.length)];    
-    fetch('http://www.omdbapi.com/?i='+randomMovie.imdbID+'&apikey=2bbb5651')
-    .then(res => res.json())
-    .then (data => {   
-        containerRoot.innerHTML += `
-          <div>
-              <div class="card">
-                  <div class="box">
-                      <div class="img">
-                          <img src="${data.Poster}">
-                      </div>
-                      <h2>${data.Title}</h2>
-                  </div>
-              </div>
-          </div>`
-  })
-})
-
-
-
-
-
-
- 
-/* function randomMovie(moviesArray){
-    let result = [];
-    let randomMovie = moviesArray[Math.floor(Math.random() * moviesArray.length)];    
-    fetch('http://www.omdbapi.com/?i='+randomMovie.imdbID+'&apikey=f465da65')
-    .then(res => res.json())
-    .then (data => {      
-      result.push(data)                           
-    })     
-    return result;
-  }  */
+    }
+    return arr;
+  }  */ 
