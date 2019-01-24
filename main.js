@@ -160,35 +160,12 @@ function sortData(data, sortBy, sortOrder) {
         <img src="${data.Poster}" id="img2" class="img-fluid" alt="poster">
         <div class="card-body">
         <h3 class="card-title">${data.Title}</h3>
-        <p class="card-subtitle">${data.Country}</p>
-        <p class="card-subtitle">${data.Genre}</p>
-        <p class="card-subtitle">${data.Year}</p>
         </div>
         </div>
         </div>`
       }) 
   }  
 
-document.getElementById("all").addEventListener('click', () => {
-  containerRoot.innerHTML = ""; 
-  arrTotal = [];  
-  for (let i = 0; i<moviesArray.length; i++){    
-      fetch('http://www.omdbapi.com/?i='+moviesArray[i].imdbID+'&apikey=2bbb5651')
-      .then(res => res.json())
-      .then (data => {
-        arrTotal.push(data)  
-        containerRoot.innerHTML +=`<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-        <div class="card" style="width: 18rem;">
-        <img src="${data.Poster}" id="img2" class="img-fluid" alt="poster">
-        <div class="card-body">
-        <h3 class="card-title">${data.Title}</h3>
-        <p class="card-subtitle">${data.Country}</p>
-        </div>
-        </div>
-        </div>`
-      }) 
-  } 
-})
 
 
 
@@ -208,7 +185,6 @@ selectGenre.addEventListener('change', () => {
               <img src="${data.Poster}" id="img2" class="img-fluid" alt="poster">
               <div class="card-body">
               <h3 class="card-title">${data.Title}</h3>
-              <p class="card-subtitle">${data.Country}</p>
               </div>
               </div>
               </div>`
@@ -231,7 +207,6 @@ selectCountry.addEventListener('change', () => {
               <img src="${data.Poster}" id="img2" class="img-fluid" alt="poster">
               <div class="card-body">
               <h3 class="card-title">${data.Title}</h3>
-              <p class="card-subtitle">${data.Country}</p>
               </div>
               </div>
               </div>`
@@ -252,7 +227,6 @@ document.getElementById("random").addEventListener("click", function(){
         <img src="${data.Poster}" id="img2" class="img-fluid" alt="poster">
         <div class="card-body">
         <h3 class="card-title">${data.Title}</h3>
-        <p class="card-subtitle">${data.Country}</p>
         </div>
         </div>
         </div>`
