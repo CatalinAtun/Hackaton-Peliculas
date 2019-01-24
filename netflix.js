@@ -1,5 +1,4 @@
- 
-
+/*  
 const netflixOriginals = [
     {title:"Beasts of No Nation", imdbID:"tt1365050"},
     {title:"Crouching Tiger, Hidden Dragon Sword of Destiny", imdbID:"tt2652118"},
@@ -135,46 +134,14 @@ const netflixOriginals = [
     {title:"5 Star Christmas", imdbID:"tt8775056"},
     {title:"Lionheart", imdbID:"tt7707314"},
     {Title:"The Last Laugh", imdbID:"tt7427356"} 
-    ]
+]
+ */
+/* window.netflixOriginals = netflixOriginals; */
 
-function getMovies(moviesArray){
-  let arr = [];
-  for (let i = 0; i<moviesArray.length; i++){    
-      fetch('http://www.omdbapi.com/?i='+moviesArray[i].imdbID+'&apikey=f465da65')
-      .then(res => res.json())
-      .then (data => {
-        arr.push(data);
-      }) 
-  }
-  return arr;
-}
-    
-function filterData(moviesArray, condition){
-  let arr = [];
-  for (let i = 0; i<moviesArray.length; i++){    
-    fetch('http://www.omdbapi.com/?i='+moviesArray[i].imdbID+'&apikey=f465da65')
-    .then(res => res.json())
-    .then (data => {      
-      if (data.Year === condition){
-        arr.push(data);
-      } else if ((data.Genre).includes(condition) === true){
-        arr.push(data);
-      }                        
-    }) 
-  }
-  return arr;
-}
 
-function randomData(moviesArray){
-  let result = [];
-  let randomMovie = moviesArray[Math.floor(Math.random() * moviesArray.length)];    
-  fetch('http://www.omdbapi.com/?i='+randomMovie.imdbID+'&apikey=f465da65')
-  .then(res => res.json())
-  .then (data => {      
-    result.push(data)                           
-  })     
-  return result;
-} 
+//Music, Action, Fantasy, Romance, Horror, Thriller, Biography, Sci-Fi, Mystery, Crime, Animation, History, Western, Sport, Family, Drama, Adventure, Comedy, War, Action
+
+
 
 
 
